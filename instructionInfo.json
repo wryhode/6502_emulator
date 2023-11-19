@@ -1,0 +1,757 @@
+{
+    "0": {
+        "instruction": "BRK",
+        "addressingMode": "b",
+        "length": 0
+    },
+    "1": {
+        "instruction": "ORA",
+        "addressingMode": "(d,x)",
+        "length": 1
+    },
+    "5": {
+        "instruction": "ORA",
+        "addressingMode": "d",
+        "length": 1
+    },
+    "6": {
+        "instruction": "ASL",
+        "addressingMode": "d",
+        "length": 1
+    },
+    "8": {
+        "instruction": "PHP",
+        "addressingMode": "implied",
+        "length": 0
+    },
+    "9": {
+        "instruction": "ORA",
+        "addressingMode": "#",
+        "length": 1
+    },
+    "10": {
+        "instruction": "ASL",
+        "addressingMode": "a",
+        "length": 2
+    },
+    "13": {
+        "instruction": "ORA",
+        "addressingMode": "a",
+        "length": 2
+    },
+    "14": {
+        "instruction": "ASL",
+        "addressingMode": "a",
+        "length": 2
+    },
+    "16": {
+        "instruction": "BPL",
+        "addressingMode": "r",
+        "length": 1
+    },
+    "17": {
+        "instruction": "ORA",
+        "addressingMode": "(d),y",
+        "length": 1
+    },
+    "21": {
+        "instruction": "ORA",
+        "addressingMode": "d,x",
+        "length": 1
+    },
+    "22": {
+        "instruction": "ASL",
+        "addressingMode": "d,x",
+        "length": 1
+    },
+    "24": {
+        "instruction": "CLC",
+        "addressingMode": "implied",
+        "length": 0
+    },
+    "25": {
+        "instruction": "ORA",
+        "addressingMode": "a,y",
+        "length": 2
+    },
+    "29": {
+        "instruction": "ORA",
+        "addressingMode": "a,x",
+        "length": 2
+    },
+    "30": {
+        "instruction": "ASL",
+        "addressingMode": "a,x",
+        "length": 2
+    },
+    "32": {
+        "instruction": "JSR",
+        "addressingMode": "a",
+        "length": 2
+    },
+    "33": {
+        "instruction": "AND",
+        "addressingMode": "(d,x)",
+        "length": 1
+    },
+    "36": {
+        "instruction": "BIT",
+        "addressingMode": "d",
+        "length": 1
+    },
+    "37": {
+        "instruction": "AND",
+        "addressingMode": "d",
+        "length": 1
+    },
+    "38": {
+        "instruction": "ROL",
+        "addressingMode": "d",
+        "length": 1
+    },
+    "40": {
+        "instruction": "PLP",
+        "addressingMode": "implied",
+        "length": 0
+    },
+    "41": {
+        "instruction": "AND",
+        "addressingMode": "#",
+        "length": 1
+    },
+    "42": {
+        "instruction": "ROL",
+        "addressingMode": "a",
+        "length": 2
+    },
+    "44": {
+        "instruction": "BIT",
+        "addressingMode": "a",
+        "length": 2
+    },
+    "45": {
+        "instruction": "AND",
+        "addressingMode": "a",
+        "length": 2
+    },
+    "46": {
+        "instruction": "ROL",
+        "addressingMode": "a",
+        "length": 2
+    },
+    "48": {
+        "instruction": "BMI",
+        "addressingMode": "r",
+        "length": 1
+    },
+    "49": {
+        "instruction": "AND",
+        "addressingMode": "(d),y",
+        "length": 1
+    },
+    "53": {
+        "instruction": "AND",
+        "addressingMode": "d,x",
+        "length": 1
+    },
+    "54": {
+        "instruction": "ROL",
+        "addressingMode": "d,x",
+        "length": 1
+    },
+    "56": {
+        "instruction": "SEC",
+        "addressingMode": "implied",
+        "length": 0
+    },
+    "57": {
+        "instruction": "AND",
+        "addressingMode": "a,y",
+        "length": 2
+    },
+    "61": {
+        "instruction": "AND",
+        "addressingMode": "a,x",
+        "length": 2
+    },
+    "62": {
+        "instruction": "ROL",
+        "addressingMode": "a,x",
+        "length": 2
+    },
+    "64": {
+        "instruction": "RTI",
+        "addressingMode": "implied",
+        "length": 0
+    },
+    "65": {
+        "instruction": "EOR",
+        "addressingMode": "(d,x)",
+        "length": 1
+    },
+    "69": {
+        "instruction": "EOR",
+        "addressingMode": "d",
+        "length": 1
+    },
+    "70": {
+        "instruction": "LSR",
+        "addressingMode": "d",
+        "length": 1
+    },
+    "72": {
+        "instruction": "PHA",
+        "addressingMode": "implied",
+        "length": 0
+    },
+    "73": {
+        "instruction": "EOR",
+        "addressingMode": "#",
+        "length": 1
+    },
+    "74": {
+        "instruction": "LSR",
+        "addressingMode": "a",
+        "length": 2
+    },
+    "76": {
+        "instruction": "JMP",
+        "addressingMode": "a",
+        "length": 2
+    },
+    "77": {
+        "instruction": "EOR",
+        "addressingMode": "a",
+        "length": 2
+    },
+    "78": {
+        "instruction": "LSR",
+        "addressingMode": "a",
+        "length": 2
+    },
+    "80": {
+        "instruction": "BVC",
+        "addressingMode": "r",
+        "length": 1
+    },
+    "81": {
+        "instruction": "EOR",
+        "addressingMode": "(d),y",
+        "length": 1
+    },
+    "85": {
+        "instruction": "EOR",
+        "addressingMode": "d,x",
+        "length": 1
+    },
+    "86": {
+        "instruction": "LSR",
+        "addressingMode": "d,x",
+        "length": 1
+    },
+    "88": {
+        "instruction": "CLI",
+        "addressingMode": "implied",
+        "length": 0
+    },
+    "89": {
+        "instruction": "EOR",
+        "addressingMode": "a,y",
+        "length": 2
+    },
+    "93": {
+        "instruction": "EOR",
+        "addressingMode": "a,x",
+        "length": 2
+    },
+    "94": {
+        "instruction": "LSR",
+        "addressingMode": "a,x",
+        "length": 2
+    },
+    "96": {
+        "instruction": "RTS",
+        "addressingMode": "implied",
+        "length": 0
+    },
+    "97": {
+        "instruction": "ADC",
+        "addressingMode": "(d,x)",
+        "length": 1
+    },
+    "101": {
+        "instruction": "ADC",
+        "addressingMode": "d",
+        "length": 1
+    },
+    "102": {
+        "instruction": "ROR",
+        "addressingMode": "d",
+        "length": 1
+    },
+    "104": {
+        "instruction": "PLA",
+        "addressingMode": "implied",
+        "length": 0
+    },
+    "105": {
+        "instruction": "ADC",
+        "addressingMode": "#",
+        "length": 1
+    },
+    "106": {
+        "instruction": "ROR",
+        "addressingMode": "a",
+        "length": 2
+    },
+    "108": {
+        "instruction": "JMP",
+        "addressingMode": "(a)",
+        "length": 2
+    },
+    "109": {
+        "instruction": "ADC",
+        "addressingMode": "a",
+        "length": 2
+    },
+    "110": {
+        "instruction": "ROR",
+        "addressingMode": "a",
+        "length": 2
+    },
+    "112": {
+        "instruction": "BVS",
+        "addressingMode": "r",
+        "length": 1
+    },
+    "113": {
+        "instruction": "ADC",
+        "addressingMode": "(d),y",
+        "length": 1
+    },
+    "117": {
+        "instruction": "ADC",
+        "addressingMode": "d,x",
+        "length": 1
+    },
+    "118": {
+        "instruction": "ROR",
+        "addressingMode": "d,x",
+        "length": 1
+    },
+    "120": {
+        "instruction": "SEI",
+        "addressingMode": "implied",
+        "length": 0
+    },
+    "121": {
+        "instruction": "ADC",
+        "addressingMode": "a,y",
+        "length": 2
+    },
+    "125": {
+        "instruction": "ADC",
+        "addressingMode": "a,x",
+        "length": 2
+    },
+    "126": {
+        "instruction": "ROR",
+        "addressingMode": "a,x",
+        "length": 2
+    },
+    "129": {
+        "instruction": "STA",
+        "addressingMode": "(d,x)",
+        "length": 1
+    },
+    "132": {
+        "instruction": "STY",
+        "addressingMode": "d",
+        "length": 1
+    },
+    "133": {
+        "instruction": "STA",
+        "addressingMode": "d",
+        "length": 1
+    },
+    "134": {
+        "instruction": "STX",
+        "addressingMode": "d",
+        "length": 1
+    },
+    "136": {
+        "instruction": "DEY",
+        "addressingMode": "implied",
+        "length": 0
+    },
+    "138": {
+        "instruction": "TXA",
+        "addressingMode": "implied",
+        "length": 0
+    },
+    "140": {
+        "instruction": "STY",
+        "addressingMode": "a",
+        "length": 2
+    },
+    "141": {
+        "instruction": "STA",
+        "addressingMode": "a",
+        "length": 2
+    },
+    "142": {
+        "instruction": "STX",
+        "addressingMode": "a",
+        "length": 2
+    },
+    "144": {
+        "instruction": "BCC",
+        "addressingMode": "r",
+        "length": 1
+    },
+    "145": {
+        "instruction": "STA",
+        "addressingMode": "(d),y",
+        "length": 1
+    },
+    "148": {
+        "instruction": "STY",
+        "addressingMode": "d,x",
+        "length": 1
+    },
+    "149": {
+        "instruction": "STA",
+        "addressingMode": "d,x",
+        "length": 1
+    },
+    "150": {
+        "instruction": "STX",
+        "addressingMode": "d,y",
+        "length": 1
+    },
+    "152": {
+        "instruction": "TYA",
+        "addressingMode": "implied",
+        "length": 0
+    },
+    "153": {
+        "instruction": "STA",
+        "addressingMode": "a,y",
+        "length": 2
+    },
+    "154": {
+        "instruction": "TXS",
+        "addressingMode": "implied",
+        "length": 0
+    },
+    "157": {
+        "instruction": "STA",
+        "addressingMode": "a,x",
+        "length": 2
+    },
+    "160": {
+        "instruction": "LDY",
+        "addressingMode": "#",
+        "length": 1
+    },
+    "161": {
+        "instruction": "LDA",
+        "addressingMode": "(d,x)",
+        "length": 1
+    },
+    "162": {
+        "instruction": "LDX",
+        "addressingMode": "#",
+        "length": 1
+    },
+    "164": {
+        "instruction": "LDY",
+        "addressingMode": "d",
+        "length": 1
+    },
+    "165": {
+        "instruction": "LDA",
+        "addressingMode": "d",
+        "length": 1
+    },
+    "166": {
+        "instruction": "LDX",
+        "addressingMode": "d",
+        "length": 1
+    },
+    "168": {
+        "instruction": "TAY",
+        "addressingMode": "implied",
+        "length": 0
+    },
+    "169": {
+        "instruction": "LDA",
+        "addressingMode": "#",
+        "length": 1
+    },
+    "170": {
+        "instruction": "TAX",
+        "addressingMode": "implied",
+        "length": 0
+    },
+    "172": {
+        "instruction": "LDY",
+        "addressingMode": "a",
+        "length": 2
+    },
+    "173": {
+        "instruction": "LDA",
+        "addressingMode": "a",
+        "length": 2
+    },
+    "174": {
+        "instruction": "LDX",
+        "addressingMode": "a",
+        "length": 2
+    },
+    "176": {
+        "instruction": "BCS",
+        "addressingMode": "r",
+        "length": 1
+    },
+    "177": {
+        "instruction": "LDA",
+        "addressingMode": "(d),y",
+        "length": 1
+    },
+    "180": {
+        "instruction": "LDY",
+        "addressingMode": "d,x",
+        "length": 1
+    },
+    "181": {
+        "instruction": "LDA",
+        "addressingMode": "d,x",
+        "length": 1
+    },
+    "182": {
+        "instruction": "LDX",
+        "addressingMode": "d,y",
+        "length": 1
+    },
+    "184": {
+        "instruction": "CLV",
+        "addressingMode": "implied",
+        "length": 0
+    },
+    "185": {
+        "instruction": "LDA",
+        "addressingMode": "a,y",
+        "length": 2
+    },
+    "186": {
+        "instruction": "TSX",
+        "addressingMode": "implied",
+        "length": 0
+    },
+    "188": {
+        "instruction": "LDY",
+        "addressingMode": "a,x",
+        "length": 2
+    },
+    "189": {
+        "instruction": "LDA",
+        "addressingMode": "a,x",
+        "length": 2
+    },
+    "190": {
+        "instruction": "LDX",
+        "addressingMode": "a,y",
+        "length": 2
+    },
+    "192": {
+        "instruction": "CPY",
+        "addressingMode": "#",
+        "length": 1
+    },
+    "193": {
+        "instruction": "CMP",
+        "addressingMode": "(d,x)",
+        "length": 1
+    },
+    "196": {
+        "instruction": "CPY",
+        "addressingMode": "d",
+        "length": 1
+    },
+    "197": {
+        "instruction": "CMP",
+        "addressingMode": "d",
+        "length": 1
+    },
+    "198": {
+        "instruction": "DEC",
+        "addressingMode": "d",
+        "length": 1
+    },
+    "200": {
+        "instruction": "INY",
+        "addressingMode": "implied",
+        "length": 0
+    },
+    "201": {
+        "instruction": "CMP",
+        "addressingMode": "#",
+        "length": 1
+    },
+    "202": {
+        "instruction": "DEX",
+        "addressingMode": "implied",
+        "length": 0
+    },
+    "204": {
+        "instruction": "CPY",
+        "addressingMode": "a",
+        "length": 2
+    },
+    "205": {
+        "instruction": "CMP",
+        "addressingMode": "a",
+        "length": 2
+    },
+    "206": {
+        "instruction": "DEC",
+        "addressingMode": "a",
+        "length": 2
+    },
+    "208": {
+        "instruction": "BNE",
+        "addressingMode": "r",
+        "length": 1
+    },
+    "209": {
+        "instruction": "CMP",
+        "addressingMode": "(d),y",
+        "length": 1
+    },
+    "213": {
+        "instruction": "CMP",
+        "addressingMode": "d,x",
+        "length": 1
+    },
+    "214": {
+        "instruction": "DEC",
+        "addressingMode": "d,x",
+        "length": 1
+    },
+    "216": {
+        "instruction": "CLD",
+        "addressingMode": "implied",
+        "length": 0
+    },
+    "217": {
+        "instruction": "CMP",
+        "addressingMode": "a,y",
+        "length": 2
+    },
+    "221": {
+        "instruction": "CMP",
+        "addressingMode": "a,x",
+        "length": 2
+    },
+    "222": {
+        "instruction": "DEC",
+        "addressingMode": "a,x",
+        "length": 2
+    },
+    "224": {
+        "instruction": "CPX",
+        "addressingMode": "#",
+        "length": 1
+    },
+    "225": {
+        "instruction": "SBC",
+        "addressingMode": "(d,x)",
+        "length": 1
+    },
+    "228": {
+        "instruction": "CPX",
+        "addressingMode": "d",
+        "length": 1
+    },
+    "229": {
+        "instruction": "SBC",
+        "addressingMode": "d",
+        "length": 1
+    },
+    "230": {
+        "instruction": "INC",
+        "addressingMode": "d",
+        "length": 1
+    },
+    "232": {
+        "instruction": "INX",
+        "addressingMode": "implied",
+        "length": 0
+    },
+    "233": {
+        "instruction": "SBC",
+        "addressingMode": "#",
+        "length": 1
+    },
+    "234": {
+        "instruction": "NOP",
+        "addressingMode": "implied",
+        "length": 0
+    },
+    "236": {
+        "instruction": "CPX",
+        "addressingMode": "a",
+        "length": 2
+    },
+    "237": {
+        "instruction": "SBC",
+        "addressingMode": "a",
+        "length": 2
+    },
+    "238": {
+        "instruction": "INC",
+        "addressingMode": "a",
+        "length": 2
+    },
+    "240": {
+        "instruction": "BEQ",
+        "addressingMode": "r",
+        "length": 1
+    },
+    "241": {
+        "instruction": "SBC",
+        "addressingMode": "(d),y",
+        "length": 1
+    },
+    "245": {
+        "instruction": "SBC",
+        "addressingMode": "d,x",
+        "length": 1
+    },
+    "246": {
+        "instruction": "INC",
+        "addressingMode": "d,x",
+        "length": 1
+    },
+    "248": {
+        "instruction": "SED",
+        "addressingMode": "implied",
+        "length": 0
+    },
+    "249": {
+        "instruction": "SBC",
+        "addressingMode": "a,y",
+        "length": 2
+    },
+    "253": {
+        "instruction": "SBC",
+        "addressingMode": "a,x",
+        "length": 2
+    },
+    "254": {
+        "instruction": "INC",
+        "addressingMode": "a,x",
+        "length": 2
+    }
+}
