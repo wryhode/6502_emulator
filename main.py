@@ -82,7 +82,7 @@ class CPU():
         self.memory.loadBinary(fc[2:],self.programCounter)
 
     def debugCurrentInstruction(self):
-        print(f"#{self.cycle} PC:{nDigitHexString(self.programCounter,4)} X:{nDigitHexString(self.xIndex,4)} Y:{nDigitHexString(self.yIndex,4)} INSTR:{self.ii.info[str(self.currentInstruction)]['instruction']}")
+        print(f"#{self.cycle} PC:{nDigitHexString(self.programCounter,4)} A:{nDigitHexString(self.accumulator,2)} X:{nDigitHexString(self.xIndex,2)} Y:{nDigitHexString(self.yIndex,2)} INSTR:{self.ii.info[str(self.currentInstruction)]['instruction']}")
 
     def step(self):
         self.cycle += 1
@@ -103,6 +103,7 @@ class CPU():
         self.programCounter += length
     
     def executeGetValue(self):
+        onAccumulator = False
         if self.addressingMode == "d,x":
             value = self.memory.read((self.operands[0] + self.xIndex) % 256)
         elif self.addressingMode == "d,y":
@@ -130,18 +131,30 @@ class CPU():
         else:
             value = None
 
-        return value
+        return onAccumulator,value
 
     def executeInstruction(self):
         self.instruction = self.ii.info[str(self.currentInstruction)]["instruction"]
         self.addressingMode = self.ii.info[str(self.currentInstruction)]["addressingMode"]
         length = self.ii.info[str(self.currentInstruction)]["length"]
 
-        value = self.executeGetValue()
+        oa,value = self.executeGetValue()
         if self.instruction == "ADC":
             self.accumulator += value
             self.flagsRegister.zero = self.accumulator == 0
 
+        elif self.instruction == "ORA":
+            self.accumulator = self.accumulator | value
+
+        elif self.instruction == "ASL":
+            self.accumulator = self.accumulator 
+
+
+        elif self.instruction == "LDA":
+            self.accumulator = value
+        
+        elif self.instruction == "STA":
+            self.memory.write(value,self.accumulator)
 
         if self.instruction == "LDY":
             self.yIndex = value
@@ -273,6 +286,9 @@ if __name__ == "__main__":
     program.close()
 
     cpu.memory.hexView(0x0800,0x10)
-    for i in range(10):
+    for i in range(4):
         cpu.step()
         cpu.debugCurrentInstruction()
+
+    cpu.memory.hexView(0x0000,0x10)
+    

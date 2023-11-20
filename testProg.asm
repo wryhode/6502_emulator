@@ -1,4 +1,5 @@
 .org $0800
 start:
-                inx
-                jmp start
+            ldy #01
+            lda #255
+            sta $0000,y

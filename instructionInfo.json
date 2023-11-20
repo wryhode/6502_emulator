@@ -31,8 +31,8 @@
     },
     "10": {
         "instruction": "ASL",
-        "addressingMode": "a",
-        "length": 2
+        "addressingMode": "A",
+        "length": 0
     },
     "13": {
         "instruction": "ORA",
@@ -121,8 +121,8 @@
     },
     "42": {
         "instruction": "ROL",
-        "addressingMode": "a",
-        "length": 2
+        "addressingMode": "A",
+        "length": 0
     },
     "44": {
         "instruction": "BIT",
@@ -211,8 +211,8 @@
     },
     "74": {
         "instruction": "LSR",
-        "addressingMode": "a",
-        "length": 2
+        "addressingMode": "A",
+        "length": 0
     },
     "76": {
         "instruction": "JMP",
@@ -301,8 +301,8 @@
     },
     "106": {
         "instruction": "ROR",
-        "addressingMode": "a",
-        "length": 2
+        "addressingMode": "A",
+        "length": 0
     },
     "108": {
         "instruction": "JMP",

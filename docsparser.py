@@ -11,6 +11,7 @@ oneOp = [
     "(d),y",
     "r"
 ]
+
 twoOp = [
     "a",
     "a,x",
@@ -19,13 +20,16 @@ twoOp = [
 ]
 
 def decodeAM(am):
-    am = am.lower()
-    if am in oneOp:
-        return 1
-    elif am in twoOp:
-        return 2
-    else:
+    if am == "A":
         return 0
+    else:
+        am = am.lower()
+        if am in oneOp:
+            return 1
+        elif am in twoOp:
+            return 2
+        else:
+            return 0
     
     raise ValueError
 
@@ -42,7 +46,10 @@ for y in data:
             
             length = decodeAM(am)
 
-            table[i] = {"instruction":addressingMode[0], "addressingMode":am.lower(), "length":length}
+            if am != "A":
+                am = am.lower()
+
+            table[i] = {"instruction":addressingMode[0], "addressingMode":am, "length":length}
     
         i += 1
 
