@@ -1,5 +1,8 @@
 from json import loads
 
+def nDigitHexString(value,digits):
+    return hex(value)[2:].zfill(digits)
+
 class CPU():
     class StatusRegister():
         def __init__(self):
@@ -61,6 +64,7 @@ class CPU():
 
     def __init__(self):
         self.ii = self.InstructionInfo()
+        self.cycle = 0
 
         self.programCounter = 0
         self.flagsRegister = self.StatusRegister()
@@ -72,10 +76,16 @@ class CPU():
 
         self.currentInstruction = 0
 
+    def loadPRG(self,file):
+        fc = file.read()
+        self.programCounter = (fc[1] << 8) + fc[0]
+        self.memory.loadBinary(fc[2:],self.programCounter)
+
     def debugCurrentInstruction(self):
-        print(f"PC:{hex(self.programCounter)[2:].zfill(4)} X:{hex(self.xIndex)[2:].zfill(4)} Y:{hex(self.yIndex)[2:].zfill(4)} INSTR:{self.ii.info[str(self.currentInstruction)]['instruction']}")
+        print(f"#{self.cycle} PC:{nDigitHexString(self.programCounter,4)} X:{nDigitHexString(self.xIndex,4)} Y:{nDigitHexString(self.yIndex,4)} INSTR:{self.ii.info[str(self.currentInstruction)]['instruction']}")
 
     def step(self):
+        self.cycle += 1
         self.fetchInstruction()
         self.executeInstruction()
 
@@ -98,15 +108,15 @@ class CPU():
         elif self.addressingMode == "d,y":
             value = self.memory.read((self.operands[0] + self.yIndex) % 256)
         elif self.addressingMode == "a,x":
-            value = self.memory.read((self.operands[1] << 2)  + self.operands[0] + self.xIndex)
+            value = self.memory.read((self.operands[1] << 8)  + self.operands[0] + self.xIndex)
         elif self.addressingMode == "a,y":
-            value = self.memory.read((self.operands[1] << 2)  + self.operands[0] + self.yIndex)
+            value = self.memory.read((self.operands[1] << 8)  + self.operands[0] + self.yIndex)
         elif self.addressingMode == "(d,x)":
             value = self.memory.read(self.memory.read((self.operands[0] + self.xIndex) % 256) + self.memory.read((self.operands[0] + self.xIndex + 1) % 256) * 256)
         elif self.addressingMode == "(d),y":
             value = self.memory.read(self.memory.read(self.operands[0]) + self.memory.read((self.operands[0] + 1) % 256) * 256 + self.yIndex)
         elif self.addressingMode == "a":
-            value = (self.operands[0] << 2) + self.operands[1]
+            value = (self.operands[1] << 8) + self.operands[0]
         elif self.addressingMode == "r":
             value = self.programCounter + (self.operands[0]-128)
         elif self.addressingMode == "implied":
@@ -114,7 +124,7 @@ class CPU():
         elif self.addressingMode == "d":
             value = self.memory.read(self.operands[0])
         elif self.addressingMode == "(a)":
-            value = self.memory.read((self.operands[1] << 2) + self.operands[0])
+            value = self.memory.read((self.operands[1] << 8) + self.operands[0])
         elif self.addressingMode == "#":
             value = self.operands[0]
         else:
@@ -144,14 +154,18 @@ class CPU():
 class MemoryMapper():
     def __init__(self):
         self.addressSpace = {}
+        self.initRaw6502()
 
-        self.addressSpace["stack"] = {"location":0,"device":RAM(256)}
-        self.addressSpace["gpram"] = {"location":256,"device":RAM(256)}
-        self.addressSpace["vram"] = {"location":512,"device":RAM(256)}
-        self.addressSpace["rom0"] = {"location":768,"device":ROM(2048)}
+    def initMinimal6502(self):
+        self.addressSpace["stack"] = {"location":0x100,"device":RAM(0x100)}
+
+    def initRaw6502(self):
+        self.addressSpace["zeroPage"] = {"location":0x0,"device":RAM(0x100)}
+        self.addressSpace["stack"] = {"location":0x100,"device":RAM(0x100)}
+        self.addressSpace["ram"] = {"location":0x200,"device":RAM(0xffff-0x200)}
 
     def hexView(self,startAddress,length):
-        print(f"==== 0x{hex(startAddress)[2:].zfill(4)} -> 0x{hex(startAddress+length)[2:].zfill(4)} ====")
+        print(f"==== 0x{nDigitHexString(startAddress,4)} -> 0x{nDigitHexString(startAddress+length,4)} ====")
 
         i = 0
         if startAddress % 8 != 0:
@@ -159,19 +173,23 @@ class MemoryMapper():
                 i += 1
         
         if i > 0:
-            print(hex(startAddress-i)[2:].zfill(4)+"\t",end="")
+            print(nDigitHexString(startAddress-i,4)+"\t",end="")
             for j in range(i):
                 print("   ",end="")
 
         for addr in range(startAddress,startAddress+length):
             if addr % 8 == 0:
                 print()
-                print(hex(addr)[2:].zfill(4), end="\t")
+                print(nDigitHexString(addr,4), end="\t")
 
-            print(hex(self.read(addr))[2:].zfill(2),end=" ")
+            print(nDigitHexString(self.read(addr),2),end=" ")
 
         print()
         print()
+
+    def loadBinary(self,fileContent,address):
+        for i,d in enumerate(fileContent):
+            self.write(address+i,d)
 
     def write(self,address,value):
         for k in self.addressSpace:
@@ -250,11 +268,11 @@ class ROM(GeneralPurposeMemory):
 if __name__ == "__main__":
     cpu = CPU()
 
-    cpu.memory.write(0,0xE8)
-    cpu.memory.write(1,0x4C)
-    cpu.memory.write(2,0x00)
-    cpu.memory.write(3,0x00)
-    cpu.memory.hexView(0,20)
+    program = open("./testProg.prg","rb")
+    cpu.loadPRG(program)
+    program.close()
+
+    cpu.memory.hexView(0x0800,0x10)
     for i in range(10):
         cpu.step()
         cpu.debugCurrentInstruction()
