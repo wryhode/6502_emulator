@@ -149,7 +149,6 @@ class CPU():
         elif self.instruction == "ASL":
             self.accumulator = self.accumulator 
 
-
         elif self.instruction == "LDA":
             self.accumulator = value
         

@@ -1,5 +1,5 @@
-.org $0800
+* = $0800
 start:
             ldy #01
-            lda #255
+            lda #250
             sta $0000,y
